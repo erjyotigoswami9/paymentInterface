@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>paying</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: green;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 22px;
+        }
+        video{
+            margin-top: 50px;
+
+            width: 600px;
+            height: 500px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="div">
+
+        <video src="https://cdn.pixabay.com/vimeo/459186395/money-transfer-49049.mp4?width=640&hash=19a5250b4b7df394e02ed53834cc2feefb5464e8" autoplay controls muted loop></video>
+        
+    </div>
+    <p class="p"> <span id="lastRs">0</span>
+        Paid Successfully on phone pe </p>
+</body>
+<script>
+    var divdisplay = document.querySelector("div") ;
+    var pdisplay = document.querySelector("p") ;
+
+    var promise1 = new Promise(function(resolve,reject){
+        divdisplay.style.display = "none" ;
+        pdisplay.style.display = "none" ;
+      resolve() ;     
+    })
+
+    promise1.then(function(){
+        setTimeout(function(){
+           divdisplay.style.display="block" ;
+        },500);
+        
+    })
+    var promise2 = new Promise(function(resolve,reject){
+        setTimeout(function(){
+            pdisplay.style.display="block" ;
+            divdisplay.style.display="none" ;
+            pdisplay.style.marginTop="300px" ;
+            pdisplay.style.fontSize="35px" ;
+            document.querySelector("#lastRs").innerHTML="Rs  "
+            document.querySelector("#lastRs").innerHTML+= JSON.parse(localStorage.getItem("rs")) || 0  ;
+            
+            document.querySelector("body").style.backgroundColor="blue" ;
+        },4000)
+    })
+    var promise3 = new Promise(function(resolve,reject){
+        console.log("promise3")
+        resolve();
+    })
+    promise3.then(function(){
+        setTimeout(function(){
+            console.log("promise3 then")
+            alert("directing back...") ;
+            window.location.href="index.html" ;
+        },5000);
+    })
+</script>
+</html>
